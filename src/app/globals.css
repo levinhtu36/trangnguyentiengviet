@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #87CEEB 0%, #98FB98 50%, #FFE4B5 100%);
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+}
+
+/* Custom animations */
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+  50% { box-shadow: 0 0 30px rgba(255, 215, 0, 1); }
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes confetti {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+}
+
+@keyframes map-path {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-star-twinkle {
+  animation: star-twinkle 1.5s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-confetti {
+  animation: confetti 1s ease-out forwards;
+}
+
+.animate-map-path {
+  animation: map-path 2s ease-out forwards;
+  stroke-dasharray: 1000;
+}
+
+/* Button styles */
+.btn-game {
+  @apply px-8 py-4 rounded-2xl font-bold text-xl transition-all duration-300 transform hover:scale-110 active:scale-95 shadow-lg;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-yellow-400 to-orange-500 text-white hover:from-yellow-500 hover:to-orange-600;
+}
+
+.btn-secondary {
+  @apply bg-gradient-to-r from-blue-400 to-purple-500 text-white hover:from-blue-500 hover:to-purple-600;
+}
+
+/* Bell button styles */
+.bell-button {
+  @apply w-32 h-32 rounded-full flex items-center justify-center text-6xl transition-all duration-150 cursor-pointer select-none;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.3), 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.bell-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3), 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bell-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Map styles */
+.map-location {
+  @apply absolute w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer;
+}
+
+.map-location.locked {
+  @apply bg-gray-400 cursor-not-allowed opacity-60;
+}
+
+.map-location.unlocked {
+  @apply bg-green-500 hover:scale-125 hover:bg-green-400;
+}
+
+.map-location.completed {
+  @apply bg-yellow-500;
+}
+
+/* Answer option styles */
+.answer-option {
+  @apply p-4 rounded-xl text-lg font-semibold transition-all duration-200 cursor-pointer border-4 border-transparent;
+  @apply bg-white hover:bg-blue-50 hover:border-blue-400 hover:scale-105;
+}
+
+.answer-option.selected {
+  @apply bg-blue-100 border-blue-500;
+}
+
+.answer-option.correct {
+  @apply bg-green-200 border-green-500;
+}
+
+.answer-option.incorrect {
+  @apply bg-red-200 border-red-500;
+}
+
+.answer-option.disabled {
+  @apply opacity-50 cursor-not-allowed hover:scale-100 hover:bg-white;
+}
+
+/* Progress bar */
+.progress-bar {
+  @apply h-4 rounded-full overflow-hidden bg-gray-200;
+}
+
+.progress-fill {
+  @apply h-full rounded-full transition-all duration-500 ease-out;
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+/* Timer styles */
+.timer-circle {
+  @apply w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold;
+  background: conic-gradient(from 0deg, #ef4444 var(--progress), #e5e7eb var(--progress));
+}
+
+/* Cute decorations */
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+  opacity: 0.8;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+}
